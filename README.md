@@ -47,7 +47,7 @@ The plugin starts one local MCP server over stdio:
 uv run --locked --project ${CLAUDE_PLUGIN_ROOT} ${CLAUDE_PLUGIN_ROOT}/pitwall.py
 ```
 
-On first start, `uv` installs the exact dependency versions recorded in `uv.lock` (FastF1, pandas, numpy, matplotlib, the MCP SDK and a few HTTP libraries) from PyPI into a virtual environment inside the plugin folder. It takes about 25 seconds and roughly 540 MB. Later starts take under a second.
+On first start, `uv` installs the exact dependency versions recorded in `uv.lock` (FastF1, pandas, numpy, matplotlib, the MCP SDK and a few HTTP libraries) from PyPI into a virtual environment inside the plugin folder. It takes about 35 seconds and roughly 250 MB, plus uv's download cache. Later starts take under a second.
 
 All server code is in this repository as readable Python: `pitwall.py` (the tools), `signalr_client.py`, `merger.py`, `decompressor.py` and `topics.py` (the live-timing client).
 
@@ -84,7 +84,7 @@ The plugin doesn't use F1 TV or any login. Live car telemetry and GPS positions 
 - Detailed timing and telemetry cover 2018 onward. Results before 2018 come from Jolpica and have no lap data.
 - Full data for a session is published about 30 minutes after it ends.
 - Live tools only return data while a session is running. Otherwise they say so.
-- The first start downloads about 540 MB of dependencies.
+- The first start downloads about 250 MB of dependencies and takes about 35 seconds.
 
 ## Support
 
