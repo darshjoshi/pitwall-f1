@@ -63,6 +63,7 @@ Pitwall F1 only makes outbound requests to fetch public F1 data. It sends each s
 | `api.formula1.com`, `raw.githubusercontent.com` | Season schedule, as fetched by FastF1 |
 | `api.multiviewer.app` | Circuit corner and layout data, as fetched by FastF1 |
 | `pypi.org`, `files.pythonhosted.org` | Dependency install by `uv` on first start |
+| `github.com` | Only if no Python 3.10+ is installed: `uv` downloads a standalone Python build on first start |
 
 The plugin doesn't use F1 TV or any login. Live car telemetry and GPS positions need an F1 TV subscription upstream, so this edition doesn't offer them.
 

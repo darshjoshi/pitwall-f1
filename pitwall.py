@@ -104,6 +104,12 @@ _http.headers.update({"User-Agent": "Pitwall/1.0"})
 
 def _get_json(path: str) -> dict:
     resp = _http.get(f"{STATIC_BASE}/{path}", timeout=15)
+    # The archive answers a missing path with 403/404; say what's wrong instead of echoing it.
+    if resp.status_code in (403, 404):
+        raise LookupError(
+            f"no F1 timing data at '{path}'. The timing archive covers 2018 to the latest "
+            "completed session; list_races(year) gives valid session paths. For seasons "
+            "before 2018 use get_historical_results or get_championship_standings.")
     resp.raise_for_status()
     resp.encoding = "utf-8-sig"
     return resp.json()
@@ -964,7 +970,7 @@ if FASTF1_AVAILABLE:
         try:
             s = fastf1.get_session(year, gp, session)
             s.load(telemetry=False)
-            lap = s.laps.pick_driver(driver).pick_fastest()
+            lap = s.laps.pick_drivers(driver).pick_fastest()
 
             if lap is None or pd.isna(lap['LapTime']):
                 return f"No qualifying lap found for {driver} in {gp} {year} {session}. The driver may have been eliminated in an earlier session."
@@ -995,8 +1001,8 @@ if FASTF1_AVAILABLE:
             s = fastf1.get_session(year, gp, session)
             s.load()
     
-            d1 = s.laps.pick_driver(driver1).pick_fastest()
-            d2 = s.laps.pick_driver(driver2).pick_fastest()
+            d1 = s.laps.pick_drivers(driver1).pick_fastest()
+            d2 = s.laps.pick_drivers(driver2).pick_fastest()
             
             t1 = d1.get_car_data().add_distance()
             t2 = d2.get_car_data().add_distance()
@@ -1203,7 +1209,7 @@ if FASTF1_AVAILABLE:
             s.load()
             
             # Get the driver's laps
-            driver_laps = s.laps.pick_driver(driver)
+            driver_laps = s.laps.pick_drivers(driver)
             if driver_laps.empty:
                 raise ValueError(f"No laps found for driver {driver}")
             
@@ -1300,7 +1306,7 @@ if FASTF1_AVAILABLE:
         try:
             s = fastf1.get_session(year, gp, 'R')
             s.load()
-            laps = s.laps.pick_driver(driver)
+            laps = s.laps.pick_drivers(driver)
             
             stints = laps.groupby('Stint').agg({
                 'Compound': 'first',

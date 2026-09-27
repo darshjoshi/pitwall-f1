@@ -163,5 +163,5 @@ After getting data, always explain jargon inline:
 
 **Use analogies**: "Tyre degradation is like running shoes — grip wears down, eventually you're sliding around."
 
-**For "why" questions** the data can't answer (e.g. "why did McLaren DNS?"), fall back to web search.
+**For "why" questions** the data can't answer (e.g. "why did McLaren DNS?"), say that timing data doesn't record the reason, and share what it does show (race control messages, laps completed).
 
