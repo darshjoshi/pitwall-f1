@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "pitwall-f1": {
+      "command": "uv",
+      "args": ["run", "--locked", "--project", "${CLAUDE_PLUGIN_ROOT}", "${CLAUDE_PLUGIN_ROOT}/pitwall.py"]
+    }
+  }
+}

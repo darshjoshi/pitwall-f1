@@ -1,0 +1,21 @@
+{
+  "name": "pitwall-f1",
+  "owner": {
+    "name": "Darsh Joshi",
+    "email": "contact@darshjoshi.com",
+    "url": "https://github.com/darshjoshi"
+  },
+  "description": "Pitwall F1 — F1 data for Claude: telemetry, strategy, live timing, and 75 years of history",
+  "plugins": [
+    {
+      "name": "pitwall-f1",
+      "source": "./",
+      "description": "Turn Claude into your F1 race engineer: 77 read-only tools plus a skill that explains F1 in plain English.",
+      "version": "1.0.0",
+      "author": { "name": "Darsh Joshi" },
+      "homepage": "https://github.com/darshjoshi/pitwall-f1",
+      "license": "MIT",
+      "keywords": ["f1", "formula1", "motorsport", "telemetry", "racing"]
+    }
+  ]
+}

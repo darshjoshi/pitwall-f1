@@ -1,0 +1,15 @@
+{
+  "name": "pitwall-f1",
+  "displayName": "Pitwall F1",
+  "description": "Turn Claude into your F1 race engineer: 77 read-only tools for telemetry, tyre strategy, pit stops, live timing, and every race since 1950 — plus a skill that explains it all in plain English. Unofficial; not affiliated with Formula 1.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Darsh Joshi",
+    "email": "contact@darshjoshi.com",
+    "url": "https://github.com/darshjoshi"
+  },
+  "homepage": "https://github.com/darshjoshi/pitwall-f1",
+  "repository": "https://github.com/darshjoshi/pitwall-f1",
+  "license": "MIT",
+  "keywords": ["f1", "formula1", "motorsport", "telemetry", "racing"]
+}
